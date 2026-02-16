@@ -1,0 +1,6 @@
+node_modules
+*.agilekeychain
+*.agilekeychain_zip
+.vite
+out
+.DS_Store
