@@ -37,11 +37,11 @@ export default function DropZone({ onDrop }: DropZoneProps) {
 
     const files = e.dataTransfer?.files;
     if (files && files.length > 0) {
-      // Electron provides the full path via the File object
       for (let i = 0; i < files.length; i++) {
-        const filePath = (files[i] as File & { path: string }).path;
+        const filePath = window.api.getPathForFile(files[i]).replace(/\/+$/, '');
         if (filePath && filePath.endsWith('.agilekeychain')) {
           onDrop(filePath);
+          return;
         }
       }
     }

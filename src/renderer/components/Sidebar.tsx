@@ -154,17 +154,9 @@ export default function Sidebar({
     <div className="sidebar">
       <div className="sidebar-header">
         <h2>Keychains</h2>
-        <div className="sidebar-header-actions">
-          <button className="btn-icon" onClick={onOpenSettings} title="Settings">
-            {'\u2699'}
-          </button>
-          <button className="btn btn-sm" onClick={onOpen} title="Open temporarily">
-            Open
-          </button>
-          <button className="btn btn-sm btn-primary" onClick={onImport} title="Import (copy to app storage)">
-            + Import
-          </button>
-        </div>
+        <button className="btn btn-sm" onClick={onOpen} title="Open temporarily">
+          + Open
+        </button>
       </div>
       <div className="sidebar-list">
         {keychains.length === 0 ? (
@@ -187,6 +179,14 @@ export default function Sidebar({
             />
           ))
         )}
+      </div>
+      <div className="sidebar-footer">
+        <button className="btn btn-sm btn-primary" onClick={onImport} title="Import (copy to app storage)">
+          + Import
+        </button>
+        <button className="btn-icon" onClick={onOpenSettings} title="Settings">
+          {'\u2699'}
+        </button>
       </div>
     </div>
   );

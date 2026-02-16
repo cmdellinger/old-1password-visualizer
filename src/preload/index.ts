@@ -1,4 +1,4 @@
-import { contextBridge, ipcRenderer } from 'electron';
+import { contextBridge, ipcRenderer, webUtils } from 'electron';
 
 contextBridge.exposeInMainWorld('api', {
   openKeychainDialog: () => ipcRenderer.invoke('keychain:open-dialog'),
@@ -13,4 +13,5 @@ contextBridge.exposeInMainWorld('api', {
   getSettings: () => ipcRenderer.invoke('settings:get'),
   pickDirectory: () => ipcRenderer.invoke('settings:pick-directory'),
   setStorageDir: (newPath: string, moveContents: boolean) => ipcRenderer.invoke('settings:set-storage-dir', newPath, moveContents),
+  getPathForFile: (file: File) => webUtils.getPathForFile(file),
 });

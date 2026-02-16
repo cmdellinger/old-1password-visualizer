@@ -97,6 +97,7 @@ export interface ElectronAPI {
   getSettings: () => Promise<{ storageDir: string; defaultStorageDir: string }>;
   pickDirectory: () => Promise<string | null>;
   setStorageDir: (newPath: string, moveContents: boolean) => Promise<void>;
+  getPathForFile: (file: File) => string;
 }
 
 declare global {

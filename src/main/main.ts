@@ -32,7 +32,10 @@ const createWindow = () => {
     mainWindow.loadFile(path.join(__dirname, `../renderer/${MAIN_WINDOW_VITE_NAME}/index.html`));
   }
 
-  // DevTools: Cmd+Shift+I to toggle manually if needed
+  // Prevent Electron from navigating to dropped files
+  mainWindow.webContents.on('will-navigate', (event) => {
+    event.preventDefault();
+  });
 };
 
 // Register IPC handlers before window creation

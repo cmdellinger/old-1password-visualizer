@@ -161,7 +161,9 @@ export function registerIpcHandlers(): void {
   });
 
   ipcMain.handle('keychain:load-metadata', async (_event, dirPath: string) => {
-    return loadKeychainInternal(dirPath);
+    // Normalize: strip trailing slashes that macOS may add for packages
+    const normalized = dirPath.replace(/\/+$/, '');
+    return loadKeychainInternal(normalized);
   });
 
   ipcMain.handle('keychain:import', async (_event, sourcePath: string) => {
