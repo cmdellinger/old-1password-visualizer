@@ -32,10 +32,7 @@ const createWindow = () => {
     mainWindow.loadFile(path.join(__dirname, `../renderer/${MAIN_WINDOW_VITE_NAME}/index.html`));
   }
 
-  // Open DevTools in development for debugging
-  if (MAIN_WINDOW_VITE_DEV_SERVER_URL) {
-    mainWindow.webContents.openDevTools();
-  }
+  // DevTools: Cmd+Shift+I to toggle manually if needed
 };
 
 // Register IPC handlers before window creation
